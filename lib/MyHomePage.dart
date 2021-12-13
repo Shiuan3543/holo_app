@@ -8,7 +8,16 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  var _zoom = true;
+  _MyHomePageState(
+      {this.groupupperlimitNumber = 6, this.generationupperlimitNumber = 7});
+  int groupupperlimitNumber;
+  int generationupperlimitNumber;
+  late var _groupZoom = List.filled(this.groupupperlimitNumber, false);
+  //
+  late var _generationZoom =
+      List.filled(this.generationupperlimitNumber, false);
+  //
+  //var _zoom = true;
   @override
   Widget build(BuildContext context) {
     final drawer = Theme(
@@ -94,26 +103,131 @@ class _MyHomePageState extends State<MyHomePage> {
                   style: TextStyle(fontSize: 20),
                 ),
                 onTap: () {
+                  setState(() {
+                    if (_groupZoom[0] == false) {
+                      _groupZoom = List.filled(6, false);
+                      _generationZoom = List.filled(6, false);
+                    }
+                    _groupZoom[0] = !_groupZoom[0];
+                  });
                   Fluttertoast.showToast(
                       msg: 'ホロライブ',
                       toastLength: Toast.LENGTH_SHORT,
                       gravity: ToastGravity.BOTTOM,
                       backgroundColor: Colors.black,
                       textColor: Colors.white);
-                  Navigator.pop(context);
+                  //Navigator.pop(context);
                 }),
+            MyAnimatedSize(
+              sizeFactor: _groupZoom[0] ? 1 : 0,
+              duration: const Duration(
+                milliseconds: 200,
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ListTile(
+                      title: Text(
+                        '0期生',
+                        style: TextStyle(fontSize: 15),
+                      ),
+                      onTap: () {
+                        setState(() {
+                          if (_generationZoom[0] == false) {
+                            _generationZoom = List.filled(6, false);
+                          }
+                          _generationZoom[0] = !_generationZoom[0];
+                        });
+                      }),
+                  MyAnimatedSize(
+                    sizeFactor: _generationZoom[0] ? 1 : 0,
+                    duration: const Duration(
+                      milliseconds: 200,
+                    ),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        ListTile(
+                            title: Text(
+                              '1',
+                              style: TextStyle(fontSize: 15),
+                            ),
+                            onTap: () {
+                              setState(() {
+                                Fluttertoast.showToast(
+                                    msg: '1',
+                                    toastLength: Toast.LENGTH_SHORT,
+                                    gravity: ToastGravity.BOTTOM,
+                                    backgroundColor: Colors.black,
+                                    textColor: Colors.white);
+                                Navigator.pop(context);
+                              });
+                              _groupZoom = List.filled(6, false);
+                              _generationZoom = List.filled(7, false);
+                            }),
+                      ],
+                    ),
+                  ),
+                  ListTile(
+                      title: Text(
+                        '一期生',
+                        style: TextStyle(fontSize: 15),
+                      ),
+                      onTap: () {
+                        setState(() {
+                          if (_generationZoom[1] == false) {
+                            _generationZoom = List.filled(6, false);
+                          }
+                          _generationZoom[1] = !_generationZoom[1];
+                        });
+                      }),
+                  MyAnimatedSize(
+                    sizeFactor: _generationZoom[1] ? 1 : 0,
+                    duration: const Duration(
+                      milliseconds: 200,
+                    ),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        ListTile(
+                            title: Text(
+                              '1',
+                              style: TextStyle(fontSize: 15),
+                            ),
+                            onTap: () {
+                              setState(() {
+                                Fluttertoast.showToast(
+                                    msg: '1',
+                                    toastLength: Toast.LENGTH_SHORT,
+                                    gravity: ToastGravity.BOTTOM,
+                                    backgroundColor: Colors.black,
+                                    textColor: Colors.white);
+                                Navigator.pop(context);
+                              });
+                              _groupZoom = List.filled(6, false);
+                              _generationZoom = List.filled(7, false);
+                            }),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
             ListTile(
                 title: Text(
-                  'ホロスターズ123',
+                  'ホロスターズ',
                   style: TextStyle(fontSize: 20),
                 ),
                 onTap: () {
                   setState(() {
-                    _zoom = !_zoom;
+                    if (_groupZoom[1] == false) {
+                      _groupZoom = List.filled(6, false);
+                    }
+                    _groupZoom[1] = !_groupZoom[1];
                   });
                 }),
             MyAnimatedSize(
-              sizeFactor: _zoom ? 1 : 0,
+              sizeFactor: _groupZoom[1] ? 1 : 0,
               duration: const Duration(
                 milliseconds: 200,
               ),
@@ -179,6 +293,20 @@ class _MyHomePageState extends State<MyHomePage> {
                 onTap: () {
                   Fluttertoast.showToast(
                       msg: '卒業',
+                      toastLength: Toast.LENGTH_SHORT,
+                      gravity: ToastGravity.BOTTOM,
+                      backgroundColor: Colors.black,
+                      textColor: Colors.white);
+                  Navigator.pop(context);
+                }),
+            ListTile(
+                title: Text(
+                  '',
+                  style: TextStyle(fontSize: 20),
+                ),
+                onTap: () {
+                  Fluttertoast.showToast(
+                      msg: '',
                       toastLength: Toast.LENGTH_SHORT,
                       gravity: ToastGravity.BOTTOM,
                       backgroundColor: Colors.black,
