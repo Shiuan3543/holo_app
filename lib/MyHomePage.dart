@@ -3,20 +3,23 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'MyAnimatedSize.dart';
 
 class MyHomePage extends StatefulWidget {
+  int groupupperlimitNumber = 6;
+  int generationupperlimitNumber = 7;
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<MyHomePage> createState() =>
+      _MyHomePageState(groupupperlimitNumber, generationupperlimitNumber);
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  _MyHomePageState(
-      {this.groupupperlimitNumber = 6, this.generationupperlimitNumber = 7});
-  int groupupperlimitNumber;
-  int generationupperlimitNumber;
+  late int groupupperlimitNumber;
+  late int generationupperlimitNumber;
+  _MyHomePageState(groupupperlimitNumber1, generationupperlimitNumber1) {
+    this.groupupperlimitNumber = groupupperlimitNumber1;
+    this.generationupperlimitNumber = generationupperlimitNumber1;
+  }
   late var _groupZoom = List.filled(this.groupupperlimitNumber, false);
-  //
   late var _generationZoom =
       List.filled(this.generationupperlimitNumber, false);
-  //
   //var _zoom = true;
   @override
   Widget build(BuildContext context) {
