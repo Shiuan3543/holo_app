@@ -5,21 +5,26 @@ import 'MyAnimatedSize.dart';
 class MyHomePage extends StatefulWidget {
   int groupupperlimitNumber = 6;
   int generationupperlimitNumber = 7;
+  int enddrawerstateNumber = 2;
   @override
-  State<MyHomePage> createState() =>
-      _MyHomePageState(groupupperlimitNumber, generationupperlimitNumber);
+  State<MyHomePage> createState() => _MyHomePageState(
+      groupupperlimitNumber, generationupperlimitNumber, enddrawerstateNumber);
 }
 
 class _MyHomePageState extends State<MyHomePage> {
   late int groupupperlimitNumber;
   late int generationupperlimitNumber;
-  _MyHomePageState(groupupperlimitNumber1, generationupperlimitNumber1) {
-    this.groupupperlimitNumber = groupupperlimitNumber1;
-    this.generationupperlimitNumber = generationupperlimitNumber1;
+  late int enddrawerstateNumber;
+  _MyHomePageState(
+      groupupperlimitNumber, generationupperlimitNumber, enddrawerstateNumber) {
+    this.groupupperlimitNumber = groupupperlimitNumber;
+    this.generationupperlimitNumber = generationupperlimitNumber;
+    this.enddrawerstateNumber = enddrawerstateNumber;
   }
   late var _groupZoom = List.filled(this.groupupperlimitNumber, false);
   late var _generationZoom =
       List.filled(this.generationupperlimitNumber, false);
+  late var _enddrawerstate = List.filled(this.enddrawerstateNumber, true);
   //var _zoom = true;
   @override
   Widget build(BuildContext context) {
@@ -320,6 +325,81 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
     );
+    var youtubeImglight = Image.network(
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/YouTube_social_white_circle_%282017%29.svg/480px-YouTube_social_white_circle_%282017%29.svg.png',
+        fit: BoxFit.cover);
+    var twitterImglight = Image.network(
+        'https://upload.wikimedia.org/wikipedia/zh/thumb/9/9f/Twitter_bird_logo_2012.svg/180px-Twitter_bird_logo_2012.svg.png');
+    final enddrawer = Drawer(
+      child: ListView(
+        children: <Widget>[
+          ListTile(
+              title: Text(
+                'Youtube',
+                style: TextStyle(fontSize: 20),
+              ),
+              leading: ConstrainedBox(
+                constraints: BoxConstraints(
+                  minWidth: 44,
+                  minHeight: 44,
+                  maxWidth: 44,
+                  maxHeight: 44,
+                ),
+                child: youtubeImglight,
+              ),
+              onTap: () {
+                if (_enddrawerstate[0] == true) {
+                  Fluttertoast.showToast(
+                      msg: 'Youtube',
+                      toastLength: Toast.LENGTH_SHORT,
+                      gravity: ToastGravity.BOTTOM,
+                      backgroundColor: Colors.black,
+                      textColor: Colors.white);
+                  //Navigator.pop(context);
+                }
+                setState(() {
+                  if (_enddrawerstate[0] == true) {
+                    _enddrawerstate =
+                        List.filled(this.enddrawerstateNumber, true);
+                    _enddrawerstate[0] = !_enddrawerstate[0];
+                  }
+                });
+              }),
+          ListTile(
+              title: Text(
+                'Twitter',
+                style: TextStyle(fontSize: 20),
+              ),
+              leading: ConstrainedBox(
+                constraints: BoxConstraints(
+                  minWidth: 44,
+                  minHeight: 44,
+                  maxWidth: 44,
+                  maxHeight: 44,
+                ),
+                child: twitterImglight,
+              ),
+              onTap: () {
+                if (_enddrawerstate[1] == true) {
+                  Fluttertoast.showToast(
+                      msg: 'Twitter',
+                      toastLength: Toast.LENGTH_SHORT,
+                      gravity: ToastGravity.BOTTOM,
+                      backgroundColor: Colors.black,
+                      textColor: Colors.white);
+                  //Navigator.pop(context);
+                }
+                setState(() {
+                  if (_enddrawerstate[1] == true) {
+                    _enddrawerstate =
+                        List.filled(this.enddrawerstateNumber, true);
+                    _enddrawerstate[1] = !_enddrawerstate[1];
+                  }
+                });
+              }),
+        ],
+      ),
+    );
 
     // 建立AppBar
     final appBar = AppBar(
@@ -330,6 +410,7 @@ class _MyHomePageState extends State<MyHomePage> {
     final page = Scaffold(
       appBar: appBar,
       drawer: drawer,
+      endDrawer: enddrawer,
     );
 
     return page;
