@@ -5,7 +5,7 @@ import 'MyAnimatedSize.dart';
 class MyHomePage extends StatefulWidget {
   int groupupperlimitNumber = 6;
   int generationupperlimitNumber = 7;
-  int enddrawerstateNumber = 2;
+  int enddrawerstateNumber = -1;
   @override
   State<MyHomePage> createState() => _MyHomePageState(
       groupupperlimitNumber, generationupperlimitNumber, enddrawerstateNumber);
@@ -24,6 +24,16 @@ class _MyHomePageState extends State<MyHomePage> {
   late var _groupZoom = List.filled(this.groupupperlimitNumber, false);
   late var _generationZoom =
       List.filled(this.generationupperlimitNumber, false);
+  static const enddrawerItems = <String>[
+    'Youtube',
+    'Twitter',
+  ];
+  static const enddrawerIcons = <String>['youtubeImglight', 'twitterImglight'];
+  var youtubeImglight = Image.network(
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/YouTube_social_white_circle_%282017%29.svg/480px-YouTube_social_white_circle_%282017%29.svg.png',
+      fit: BoxFit.cover);
+  var twitterImglight = Image.network(
+      'https://upload.wikimedia.org/wikipedia/zh/thumb/9/9f/Twitter_bird_logo_2012.svg/180px-Twitter_bird_logo_2012.svg.png');
   late var _enddrawerstate = List.filled(this.enddrawerstateNumber, true);
   //var _zoom = true;
   @override
@@ -325,81 +335,33 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
     );
-    var youtubeImglight = Image.network(
-        'https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/YouTube_social_white_circle_%282017%29.svg/480px-YouTube_social_white_circle_%282017%29.svg.png',
-        fit: BoxFit.cover);
-    var twitterImglight = Image.network(
-        'https://upload.wikimedia.org/wikipedia/zh/thumb/9/9f/Twitter_bird_logo_2012.svg/180px-Twitter_bird_logo_2012.svg.png');
+    int tappedIndex = -1;
     final enddrawer = Drawer(
-      child: ListView(
-        children: <Widget>[
-          ListTile(
-              title: Text(
-                'Youtube',
-                style: TextStyle(fontSize: 20),
-              ),
-              leading: ConstrainedBox(
-                constraints: BoxConstraints(
-                  minWidth: 44,
-                  minHeight: 44,
-                  maxWidth: 44,
-                  maxHeight: 44,
-                ),
-                child: youtubeImglight,
-              ),
-              onTap: () {
-                if (_enddrawerstate[0] == true) {
-                  Fluttertoast.showToast(
-                      msg: 'Youtube',
-                      toastLength: Toast.LENGTH_SHORT,
-                      gravity: ToastGravity.BOTTOM,
-                      backgroundColor: Colors.black,
-                      textColor: Colors.white);
-                  //Navigator.pop(context);
-                }
-                setState(() {
-                  if (_enddrawerstate[0] == true) {
-                    _enddrawerstate =
-                        List.filled(this.enddrawerstateNumber, true);
-                    _enddrawerstate[0] = !_enddrawerstate[0];
-                  }
-                });
-              }),
-          ListTile(
-              title: Text(
-                'Twitter',
-                style: TextStyle(fontSize: 20),
-              ),
-              leading: ConstrainedBox(
-                constraints: BoxConstraints(
-                  minWidth: 44,
-                  minHeight: 44,
-                  maxWidth: 44,
-                  maxHeight: 44,
-                ),
-                child: twitterImglight,
-              ),
-              onTap: () {
-                if (_enddrawerstate[1] == true) {
-                  Fluttertoast.showToast(
-                      msg: 'Twitter',
-                      toastLength: Toast.LENGTH_SHORT,
-                      gravity: ToastGravity.BOTTOM,
-                      backgroundColor: Colors.black,
-                      textColor: Colors.white);
-                  //Navigator.pop(context);
-                }
-                setState(() {
-                  if (_enddrawerstate[1] == true) {
-                    _enddrawerstate =
-                        List.filled(this.enddrawerstateNumber, true);
-                    _enddrawerstate[1] = !_enddrawerstate[1];
-                  }
-                });
-              }),
-        ],
+        child: ListView.separated(
+      shrinkWrap: true,
+      itemCount: enddrawerItems.length,
+      itemBuilder: (context, index) => ListTile(
+        title: Text(
+          enddrawerItems[index],
+          style: TextStyle(fontSize: 20),
+        ),
+        // onTap: () => textWrapper.setText('點選' + items[index]),
+        leading: Container(
+          color: tappedIndex == index ? Colors.blue : Colors.grey,
+          child: CircleAvatar(
+            backgroundImage: AssetImage(
+              enddrawerIcons[index],
+            ),
+          ),
+          padding: EdgeInsets.symmetric(vertical: 8, horizontal: 5),
+        ),
+        subtitle: Text(
+          '項目說明',
+          style: TextStyle(fontSize: 16),
+        ),
       ),
-    );
+      separatorBuilder: (context, index) => Divider(),
+    ));
 
     // 建立AppBar
     final appBar = AppBar(
