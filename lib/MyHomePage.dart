@@ -15,26 +15,18 @@ class _MyHomePageState extends State<MyHomePage> {
   late int groupupperlimitNumber;
   late int generationupperlimitNumber;
   late int enddrawerstateNumber;
-  _MyHomePageState(
-      groupupperlimitNumber, generationupperlimitNumber, enddrawerstateNumber) {
-    this.groupupperlimitNumber = groupupperlimitNumber;
-    this.generationupperlimitNumber = generationupperlimitNumber;
-    this.enddrawerstateNumber = enddrawerstateNumber;
-  }
+  _MyHomePageState(this.groupupperlimitNumber, this.generationupperlimitNumber,
+      this.enddrawerstateNumber);
+  // {
+  //   this.groupupperlimitNumber = groupupperlimitNumber;
+  //   this.generationupperlimitNumber = generationupperlimitNumber;
+  //   this.enddrawerstateNumber = enddrawerstateNumber;
+  // }
   late var _groupZoom = List.filled(this.groupupperlimitNumber, false);
   late var _generationZoom =
       List.filled(this.generationupperlimitNumber, false);
-  static const enddrawerItems = <String>[
-    'Youtube',
-    'Twitter',
-  ];
-  static const enddrawerIcons = <String>['youtubeImglight', 'twitterImglight'];
-  var youtubeImglight = Image.network(
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/YouTube_social_white_circle_%282017%29.svg/480px-YouTube_social_white_circle_%282017%29.svg.png',
-      fit: BoxFit.cover);
-  var twitterImglight = Image.network(
-      'https://upload.wikimedia.org/wikipedia/zh/thumb/9/9f/Twitter_bird_logo_2012.svg/180px-Twitter_bird_logo_2012.svg.png');
-  late var _enddrawerstate = List.filled(this.enddrawerstateNumber, true);
+  //late var _enddrawerstate = List.filled(this.enddrawerstateNumber, true);
+  int tappedIndex = -1;
   //var _zoom = true;
   @override
   Widget build(BuildContext context) {
@@ -335,30 +327,65 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
     );
-    int tappedIndex = -1;
+    const enddrawerItems = <String>[
+      'Youtube',
+      'Twitter',
+    ];
+    //const enddrawerIcons = <String>['youtubeImglight', 'twitterImglight'];
+    const enddrawerIcons = <String>[
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/YouTube_social_white_circle_%282017%29.svg/480px-YouTube_social_white_circle_%282017%29.svg.png',
+      'https://upload.wikimedia.org/wikipedia/zh/thumb/9/9f/Twitter_bird_logo_2012.svg/180px-Twitter_bird_logo_2012.svg.png'
+    ];
+    // var youtubeImglight = Image.network(
+    //     'https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/YouTube_social_white_circle_%282017%29.svg/480px-YouTube_social_white_circle_%282017%29.svg.png',
+    //     fit: BoxFit.cover);
+    // var twitterImglight = Image.network(
+    //     'https://upload.wikimedia.org/wikipedia/zh/thumb/9/9f/Twitter_bird_logo_2012.svg/180px-Twitter_bird_logo_2012.svg.png');
+
+    print('tappedIndex: $tappedIndex');
+    final List<bool> _enddrawerstate = List.generate(2, (i) => true);
     final enddrawer = Drawer(
         child: ListView.separated(
       shrinkWrap: true,
       itemCount: enddrawerItems.length,
       itemBuilder: (context, index) => ListTile(
+        tileColor: tappedIndex == index ? Colors.grey[400] : Colors.white,
         title: Text(
           enddrawerItems[index],
           style: TextStyle(fontSize: 20),
         ),
         // onTap: () => textWrapper.setText('點選' + items[index]),
+        onTap: () {
+          setState(() {
+            if (tappedIndex != index) {
+              Fluttertoast.showToast(
+                  msg: enddrawerItems[index],
+                  toastLength: Toast.LENGTH_SHORT,
+                  gravity: ToastGravity.BOTTOM,
+                  backgroundColor: Colors.black,
+                  textColor: Colors.white);
+            }
+            tappedIndex = index;
+          });
+        },
+
         leading: Container(
-          color: tappedIndex == index ? Colors.blue : Colors.grey,
-          child: CircleAvatar(
-            backgroundImage: AssetImage(
-              enddrawerIcons[index],
-            ),
+          //color: tappedIndex == index ? Colors.blue : Colors.grey[400],
+          child: Image.network(
+            enddrawerIcons[index],
+            fit: BoxFit.fill,
           ),
+          // CircleAvatar(
+          //    backgroundImage: AssetImage(
+          //      enddrawerIcons[index],
+          //    ),
+          // ),
           padding: EdgeInsets.symmetric(vertical: 8, horizontal: 5),
         ),
-        subtitle: Text(
-          '項目說明',
-          style: TextStyle(fontSize: 16),
-        ),
+        // subtitle: Text(
+        //   '項目說明',
+        //   style: TextStyle(fontSize: 16),
+        // ),
       ),
       separatorBuilder: (context, index) => Divider(),
     ));
