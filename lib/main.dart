@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'MyHomePage.dart';
+import 'home_page.dart';
 import 'note/app_body.dart';
 
 // void main() => runApp(const MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
 
     // 建立app物件
     var app = MaterialApp(
-      home: MyHomePage(),
+      home: HomePage(),
     );
 
     return app;

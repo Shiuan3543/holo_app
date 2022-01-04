@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'MyAnimatedSize.dart';
 
-class MyHomePage extends StatefulWidget {
+class HomePage extends StatefulWidget {
   int groupupperlimitNumber = 6;
   int generationupperlimitNumber = 7;
   int enddrawerstateNumber = -1;
   @override
-  State<MyHomePage> createState() => _MyHomePageState(
+  State<HomePage> createState() => _HomePageState(
       groupupperlimitNumber, generationupperlimitNumber, enddrawerstateNumber);
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _HomePageState extends State<HomePage> {
   late int groupupperlimitNumber;
   late int generationupperlimitNumber;
   late int enddrawerstateNumber;
-  _MyHomePageState(this.groupupperlimitNumber, this.generationupperlimitNumber,
+  _HomePageState(this.groupupperlimitNumber, this.generationupperlimitNumber,
       this.enddrawerstateNumber);
   // {
   //   this.groupupperlimitNumber = groupupperlimitNumber;
@@ -33,7 +33,7 @@ class _MyHomePageState extends State<MyHomePage> {
     final drawer = Theme(
       data: Theme.of(context).copyWith(
         canvasColor:
-            Colors.blue, //This will change the drawer background to blue.
+            Colors.grey[300], //This will change the drawer background to blue.
         //other styles
       ),
       child: Drawer(
@@ -358,6 +358,7 @@ class _MyHomePageState extends State<MyHomePage> {
         onTap: () {
           setState(() {
             if (tappedIndex != index) {
+              tappedIndex = index;
               Fluttertoast.showToast(
                   msg: enddrawerItems[index],
                   toastLength: Toast.LENGTH_SHORT,
@@ -365,7 +366,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   backgroundColor: Colors.black,
                   textColor: Colors.white);
             }
-            tappedIndex = index;
           });
         },
 
@@ -390,7 +390,7 @@ class _MyHomePageState extends State<MyHomePage> {
       separatorBuilder: (context, index) => Divider(),
     ));
 
-    // 建立AppBar
+    //建立AppBar
     final appBar = AppBar(
       title: Text('YagooWatch'),
     );
