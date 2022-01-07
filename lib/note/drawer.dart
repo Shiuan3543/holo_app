@@ -1,36 +1,13 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+
 import 'MyAnimatedSize.dart';
+import 'home_page.dart';
 
-class HomePage extends StatefulWidget {
-  int groupupperlimitNumber = 6;
-  int generationupperlimitNumber = 7;
-  int enddrawerstateNumber = -1;
-  @override
-  State<HomePage> createState() => _HomePageState(
-      groupupperlimitNumber, generationupperlimitNumber, enddrawerstateNumber);
-}
-
-class _HomePageState extends State<HomePage> {
-  late int groupupperlimitNumber;
-  late int generationupperlimitNumber;
-  late int enddrawerstateNumber;
-  _HomePageState(this.groupupperlimitNumber, this.generationupperlimitNumber,
-      this.enddrawerstateNumber);
-  // {
-  //   this.groupupperlimitNumber = groupupperlimitNumber;
-  //   this.generationupperlimitNumber = generationupperlimitNumber;
-  //   this.enddrawerstateNumber = enddrawerstateNumber;
-  // }
-  late var _groupZoom = List.filled(this.groupupperlimitNumber, false);
-  late var _generationZoom =
-      List.filled(this.generationupperlimitNumber, false);
-  //late var _enddrawerstate = List.filled(this.enddrawerstateNumber, true);
-  int tappedIndex = -1;
-  //var _zoom = true;
-  @override
-  Widget build(BuildContext context) {
-    final drawer = Theme(
+class drawer extends State<HomePage>{
+  
+  Theme dartLeft(BuildContext context){
+    return Theme(
       data: Theme.of(context).copyWith(
         canvasColor:
             Colors.grey[300], //This will change the drawer background to blue.
@@ -79,7 +56,7 @@ class _HomePageState extends State<HomePage> {
                     Align(
                       alignment: Alignment.centerRight + Alignment(0, .1),
                       child: Text(
-                        'è°·é„‰å…ƒæ˜­',
+                        '’J?Œ³º',
                         style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
@@ -109,7 +86,7 @@ class _HomePageState extends State<HomePage> {
             ),
             ListTile(
                 title: Text(
-                  'ãƒ›ãƒ­ãƒ©ã‚¤ãƒ–',
+                  'ƒzƒƒ‰ƒCƒu',
                   style: TextStyle(fontSize: 20),
                 ),
                 onTap: () {
@@ -121,7 +98,7 @@ class _HomePageState extends State<HomePage> {
                     _groupZoom[0] = !_groupZoom[0];
                   });
                   Fluttertoast.showToast(
-                      msg: 'ãƒ›ãƒ­ãƒ©ã‚¤ãƒ–',
+                      msg: 'ƒzƒƒ‰ƒCƒu',
                       toastLength: Toast.LENGTH_SHORT,
                       gravity: ToastGravity.BOTTOM,
                       backgroundColor: Colors.black,
@@ -138,7 +115,7 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   ListTile(
                       title: Text(
-                        '0æœŸç”Ÿ',
+                        '0Šú¶',
                         style: TextStyle(fontSize: 15),
                       ),
                       onTap: () {
@@ -180,7 +157,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   ListTile(
                       title: Text(
-                        'ä¸€æœŸç”Ÿ',
+                        'ˆêŠú¶',
                         style: TextStyle(fontSize: 15),
                       ),
                       onTap: () {
@@ -225,7 +202,7 @@ class _HomePageState extends State<HomePage> {
             ),
             ListTile(
                 title: Text(
-                  'ãƒ›ãƒ­ã‚¹ã‚¿ãƒ¼ã‚º',
+                  'ƒzƒƒXƒ^[ƒY',
                   style: TextStyle(fontSize: 20),
                 ),
                 onTap: () {
@@ -255,12 +232,12 @@ class _HomePageState extends State<HomePage> {
             ),
             ListTile(
                 title: Text(
-                  'ãƒ›ãƒ­ãƒ©ã‚¤ãƒ–ã‚¤ãƒ³ãƒ‰ãƒã‚·ã‚¢',
+                  'ƒzƒƒ‰ƒCƒuƒCƒ“ƒhƒlƒVƒA',
                   style: TextStyle(fontSize: 20),
                 ),
                 onTap: () {
                   Fluttertoast.showToast(
-                      msg: 'ãƒ›ãƒ­ãƒ©ã‚¤ãƒ–ã‚¤ãƒ³ãƒ‰ãƒã‚·ã‚¢',
+                      msg: 'ƒzƒƒ‰ƒCƒuƒCƒ“ƒhƒlƒVƒA',
                       toastLength: Toast.LENGTH_SHORT,
                       gravity: ToastGravity.BOTTOM,
                       backgroundColor: Colors.black,
@@ -269,12 +246,12 @@ class _HomePageState extends State<HomePage> {
                 }),
             ListTile(
                 title: Text(
-                  'ãƒ›ãƒ­ãƒ©ã‚¤ãƒ–English',
+                  'ƒzƒƒ‰ƒCƒuEnglish',
                   style: TextStyle(fontSize: 20),
                 ),
                 onTap: () {
                   Fluttertoast.showToast(
-                      msg: 'ãƒ›ãƒ­ãƒ©ã‚¤ãƒ–English',
+                      msg: 'ƒzƒƒ‰ƒCƒuEnglish',
                       toastLength: Toast.LENGTH_SHORT,
                       gravity: ToastGravity.BOTTOM,
                       backgroundColor: Colors.black,
@@ -283,12 +260,12 @@ class _HomePageState extends State<HomePage> {
                 }),
             ListTile(
                 title: Text(
-                  'ã‚¤ãƒãƒŠã‚«ãƒŸãƒ¥ãƒ¼ã‚¸ãƒƒã‚¯',
+                  'ƒCƒmƒiƒJƒ~ƒ…[ƒWƒbƒN',
                   style: TextStyle(fontSize: 20),
                 ),
                 onTap: () {
                   Fluttertoast.showToast(
-                      msg: 'ã‚¤ãƒãƒŠã‚«ãƒŸãƒ¥ãƒ¼ã‚¸ãƒƒã‚¯',
+                      msg: 'ƒCƒmƒiƒJƒ~ƒ…[ƒWƒbƒN',
                       toastLength: Toast.LENGTH_SHORT,
                       gravity: ToastGravity.BOTTOM,
                       backgroundColor: Colors.black,
@@ -297,12 +274,12 @@ class _HomePageState extends State<HomePage> {
                 }),
             ListTile(
                 title: Text(
-                  'å’æ¥­',
+                  '‘²‹Æ',
                   style: TextStyle(fontSize: 20),
                 ),
                 onTap: () {
                   Fluttertoast.showToast(
-                      msg: 'å’æ¥­',
+                      msg: '‘²‹Æ',
                       toastLength: Toast.LENGTH_SHORT,
                       gravity: ToastGravity.BOTTOM,
                       backgroundColor: Colors.black,
@@ -327,169 +304,5 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
-    const enddrawerItems = <String>[
-      'Youtube',
-      'Twitter',
-    ];
-    //const enddrawerIcons = <String>['youtubeImglight', 'twitterImglight'];
-    const enddrawerIcons = <String>[
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/YouTube_social_white_circle_%282017%29.svg/480px-YouTube_social_white_circle_%282017%29.svg.png',
-      'https://upload.wikimedia.org/wikipedia/zh/thumb/9/9f/Twitter_bird_logo_2012.svg/180px-Twitter_bird_logo_2012.svg.png'
-    ];
-    // var youtubeImglight = Image.network(
-    //     'https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/YouTube_social_white_circle_%282017%29.svg/480px-YouTube_social_white_circle_%282017%29.svg.png',
-    //     fit: BoxFit.cover);
-    // var twitterImglight = Image.network(
-    //     'https://upload.wikimedia.org/wikipedia/zh/thumb/9/9f/Twitter_bird_logo_2012.svg/180px-Twitter_bird_logo_2012.svg.png');
-
-    //print('tappedIndex: $tappedIndex');
-    final List<bool> _enddrawerstate = List.generate(2, (i) => true);
-    final enddrawer = Drawer(
-        child: ListView.separated(
-      shrinkWrap: true,
-      itemCount: enddrawerItems.length,
-      itemBuilder: (context, index) => ListTile(
-        tileColor: tappedIndex == index ? Colors.grey[400] : Colors.white,
-        title: Text(
-          enddrawerItems[index],
-          style: TextStyle(fontSize: 20),
-        ),
-        // onTap: () => textWrapper.setText('é»é¸' + items[index]),
-        onTap: () {
-          setState(() {
-            if (tappedIndex != index) {
-              tappedIndex = index;
-              Fluttertoast.showToast(
-                  msg: enddrawerItems[index],
-                  toastLength: Toast.LENGTH_SHORT,
-                  gravity: ToastGravity.BOTTOM,
-                  backgroundColor: Colors.black,
-                  textColor: Colors.white);
-            }
-          });
-        },
-
-        leading: Container(
-          //color: tappedIndex == index ? Colors.blue : Colors.grey[400],
-          child: Image.network(
-            enddrawerIcons[index],
-            fit: BoxFit.fill,
-          ),
-          // CircleAvatar(
-          //    backgroundImage: AssetImage(
-          //      enddrawerIcons[index],
-          //    ),
-          // ),
-          padding: EdgeInsets.symmetric(vertical: 8, horizontal: 5),
-        ),
-        // subtitle: Text(
-        //   'é …ç›®èªªæ˜',
-        //   style: TextStyle(fontSize: 16),
-        // ),
-      ),
-      separatorBuilder: (context, index) => Divider(),
-    ));
-
-    //å»ºç«‹AppBar
-    final appBar = AppBar(
-      title: Text('ICU', style: TextStyle(color: Colors.red)),
-      bottom: TabBar(
-        tabs: [
-          Tab(
-            icon: CircleAvatar(
-              backgroundImage: NetworkImage(enddrawerIcons[0]),
-              radius: 20.0,
-            ),
-            //text: 'Youtuber',
-          ),
-          Tab(
-            icon: CircleAvatar(
-              backgroundImage: NetworkImage(enddrawerIcons[1]),
-              radius: 20.0,
-            ),
-          ),
-        ],
-      ),
-    );
-    final tabBarView = TabBarView(
-      children: [
-        Container(
-          child: Text(
-            'Youtuber',
-            style: TextStyle(fontSize: 30),
-          ),
-          alignment: Alignment.center,
-          color: Colors.black12,
-        ),
-        Container(
-          child: Text(
-            'Twitter',
-            style: TextStyle(fontSize: 30),
-          ),
-          alignment: Alignment.center,
-        ),
-      ],
-    );
-
-    final bottomNaviBar = _BottomNaviBar();
-
-    // çµåˆAppBarå’ŒAppæ“ä½œç•«é¢
-    final page = DefaultTabController(
-        length: tabBarView.children.length,
-        child: Scaffold(
-          appBar: appBar,
-          drawer: drawer,
-          body: tabBarView,
-          endDrawer: enddrawer,
-          bottomNavigationBar: bottomNaviBar,
-        ));
-
-    return page;
-  }
-}
-
-class _BottomNaviBar extends StatefulWidget {
-  var naviItemIcon = [
-    Icon(Icons.home),
-    Icon(Icons.exit_to_app),
-  ];
-
-  var naviItemText = ['Home', 'Exit'];
-
-  int selectedIndex = 0;
-
-  @override
-  State<StatefulWidget> createState() => _BottomNaviBarState();
-}
-
-class _BottomNaviBarState extends State<_BottomNaviBar> {
-  @override
-  Widget build(BuildContext context) {
-    final bottomNaviBarItems = <BottomNavigationBarItem>[];
-
-    for (var i = 0; i < widget.naviItemIcon.length; i++) {
-      bottomNaviBarItems.add(BottomNavigationBarItem(
-        icon: widget.naviItemIcon[i],
-        title: Text(widget.naviItemText[i]),
-      ));
-    }
-
-    final w = BottomNavigationBar(
-      items: bottomNaviBarItems,
-      currentIndex: widget.selectedIndex,
-      onTap: (index) {
-        setState(() {
-          widget.selectedIndex = index;
-        });
-        Fluttertoast.showToast(
-            msg: 'é¸æ“‡${widget.naviItemText[index]}',
-            toastLength: Toast.LENGTH_SHORT,
-            gravity: ToastGravity.BOTTOM,
-            backgroundColor: Colors.black,
-            textColor: Colors.white);
-      },
-    );
-
-    return w;
   }
 }

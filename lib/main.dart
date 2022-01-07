@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
     var appTitle = Text('Yagoo App');
 
     // 建立appBody物件
-    var appBody = AppBody();
+    //var appBody = AppBody();
 
     // 建立app物件
     var app = MaterialApp(
