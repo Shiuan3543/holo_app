@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'MyAnimatedSize.dart';
 import 'bottomNaviBar.dart';
+import 'tabbarview.dart';
 
 class HomePage extends StatefulWidget {
   int groupupperlimitNumber = 6;
@@ -412,31 +413,14 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
     );
-    final tabBarView = TabBarView(
-      children: [
-        Container(
-          child: Text(
-            'Youtuber',
-            style: TextStyle(fontSize: 30),
-          ),
-          alignment: Alignment.center,
-          color: Colors.black12,
-        ),
-        Container(
-          child: Text(
-            'Twitter',
-            style: TextStyle(fontSize: 30),
-          ),
-          alignment: Alignment.center,
-        ),
-      ],
-    );
+    final tabBarView = tabarView();
 
     final bottomNaviBar = BottomNaviBar();
 
     // 結合AppBar和App操作畫面
     final page = DefaultTabController(
-        length: tabBarView.children.length,
+        //length: tabBarView.children.length,
+        length: tabBarView.children,
         child: Scaffold(
           appBar: appBar,
           drawer: drawer,

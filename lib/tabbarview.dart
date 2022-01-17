@@ -1,12 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class tabBarView extends StatefulWidget {
+class tabarView extends StatefulWidget {
+  get children => 2;
+  //get children => TabBarView.children.length;
   @override
-  State<StatefulWidget> createState() => _tabBarViewState();
+  State<StatefulWidget> createState() => _tabarViewState();
 }
 
-class _tabBarViewState extends State<tabBarView> {
+class _tabarViewState extends State<tabarView> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
