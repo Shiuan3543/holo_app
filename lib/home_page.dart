@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'MyAnimatedSize.dart';
+import 'bottomNaviBar.dart';
 
 class HomePage extends StatefulWidget {
   int groupupperlimitNumber = 6;
@@ -431,7 +432,7 @@ class _HomePageState extends State<HomePage> {
       ],
     );
 
-    final bottomNaviBar = _BottomNaviBar();
+    final bottomNaviBar = BottomNaviBar();
 
     // 結合AppBar和App操作畫面
     final page = DefaultTabController(
@@ -445,51 +446,5 @@ class _HomePageState extends State<HomePage> {
         ));
 
     return page;
-  }
-}
-
-class _BottomNaviBar extends StatefulWidget {
-  var naviItemIcon = [
-    Icon(Icons.home),
-    Icon(Icons.exit_to_app),
-  ];
-
-  var naviItemText = ['Home', 'Exit'];
-
-  int selectedIndex = 0;
-
-  @override
-  State<StatefulWidget> createState() => _BottomNaviBarState();
-}
-
-class _BottomNaviBarState extends State<_BottomNaviBar> {
-  @override
-  Widget build(BuildContext context) {
-    final bottomNaviBarItems = <BottomNavigationBarItem>[];
-
-    for (var i = 0; i < widget.naviItemIcon.length; i++) {
-      bottomNaviBarItems.add(BottomNavigationBarItem(
-        icon: widget.naviItemIcon[i],
-        title: Text(widget.naviItemText[i]),
-      ));
-    }
-
-    final w = BottomNavigationBar(
-      items: bottomNaviBarItems,
-      currentIndex: widget.selectedIndex,
-      onTap: (index) {
-        setState(() {
-          widget.selectedIndex = index;
-        });
-        Fluttertoast.showToast(
-            msg: '選擇${widget.naviItemText[index]}',
-            toastLength: Toast.LENGTH_SHORT,
-            gravity: ToastGravity.BOTTOM,
-            backgroundColor: Colors.black,
-            textColor: Colors.white);
-      },
-    );
-
-    return w;
   }
 }
