@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'MyAnimatedSize.dart';
-import 'bottomNaviBar.dart';
-import 'tabbarview.dart';
+import 'package:yagoowatch_demo/widgetsFile/MyAnimatedSize.dart';
+import 'package:yagoowatch_demo/widgetsFile/bottomNaviBar.dart';
+import 'package:yagoowatch_demo/widgetsFile/tabbarview.dart';
 
 class HomePage extends StatefulWidget {
   int groupupperlimitNumber = 6;

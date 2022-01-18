@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:yagoowatch_demo/widgetsFile/Introduction_body.dart';
 import 'package:yagoowatch_demo/yagoosmileImage_page.dart';
-import 'home_page.dart';
-import 'note/app_body.dart';
+import 'package:yagoowatch_demo/home_page.dart';
 
 // void main() => runApp(const MyApp());
 void main() => runApp(MyApp());

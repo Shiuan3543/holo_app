@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:yagoowatch_demo/MyAnimatedSize.dart';
+import 'package:yagoowatch_demo/widget/MyAnimatedSize.dart';
 
 class Demo1 extends StatefulWidget {
   const Demo1({Key? key}) : super(key: key);
