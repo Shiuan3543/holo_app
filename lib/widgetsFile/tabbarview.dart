@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class tabarView extends StatefulWidget {
   get children => 2;
@@ -14,19 +15,25 @@ class _tabarViewState extends State<tabarView> {
     final tabBarView = TabBarView(
       children: [
         Container(
-          child: Text(
-            'Youtuber',
-            style: TextStyle(fontSize: 30),
+          child: const WebView(
+            initialUrl: 'https://www.youtube.com/',
           ),
+          // child: Text(
+          //   'Youtuber',
+          //   style: TextStyle(fontSize: 30),
+          // ),
           alignment: Alignment.center,
           color: Colors.black12,
         ),
         Container(
-          child: Text(
-            'Twitter',
-            style: TextStyle(fontSize: 30),
+          child: const WebView(
+            initialUrl: 'https://twitter.com/home',
           ),
-          alignment: Alignment.center,
+          // child: Text(
+          //   'Twitter',
+          //   style: TextStyle(fontSize: 30),
+          // ),
+          // alignment: Alignment.center,
         ),
       ],
     );
