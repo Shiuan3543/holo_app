@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 import 'package:yagoowatch_demo/widgetsFile/MyAnimatedSize.dart';
 
 import 'package:yagoowatch_demo/widgetsFile/Tabbarview.dart';
@@ -393,24 +394,50 @@ class _HomePageState extends State<HomePage> {
       separatorBuilder: (context, index) => Divider(),
     ));
 
-    var a = <Tab>[];
-    a.length;
+    var tabs = [
+      Container(
+        child: const WebView(
+          initialUrl: 'https://www.youtube.com/',
+        ),
+        // child: Text(
+        //   'Youtuber',
+        //   style: TextStyle(fontSize: 30),
+        // ),
+        alignment: Alignment.center,
+        color: Colors.black12,
+      ),
+      Container(
+        child: const WebView(
+          initialUrl: 'https://twitter.com/home',
+        ),
+        // child: Text(
+        //   'Twitter',
+        //   style: TextStyle(fontSize: 30),
+        // ),
+        // alignment: Alignment.center,
+      ),
+    ];
 
     //建立AppBar
     final appBar = AppBar(
       title: Text('ICU', style: TextStyle(color: Colors.red)),
       bottom: TabBar(
-        tabs: a,
+        tabs: tabs,
       ),
     );
-    final tabBarView = TabarView();
+
+    final tabBarView = TabarView(tabs
+        .map((e) => Tab(
+              text: 'Hello',
+            ))
+        .toList());
 
     final bottomNaviBar = BottomNaviBar();
 
     // 結合AppBar和App操作畫面
     final page = DefaultTabController(
         //length: tabBarView.children.length,
-        length: a.length,
+        length: tabs.length,
         child: Scaffold(
           appBar: appBar,
           drawer: drawer,
