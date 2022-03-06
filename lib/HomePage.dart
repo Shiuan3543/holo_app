@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:yagoowatch_demo/widgetsFile/MyAnimatedSize.dart';
-import 'package:yagoowatch_demo/widgetsFile/bottomNaviBar.dart';
-import 'package:yagoowatch_demo/widgetsFile/tabbarview.dart';
+
+import 'package:yagoowatch_demo/widgetsFile/Tabbarview.dart';
+import 'package:yagoowatch_demo/widgetsFile/BottomNaviBar.dart';
 
 class HomePage extends StatefulWidget {
   int groupupperlimitNumber = 6;
@@ -392,35 +393,24 @@ class _HomePageState extends State<HomePage> {
       separatorBuilder: (context, index) => Divider(),
     ));
 
+    var a = <Tab>[];
+    a.length;
+
     //建立AppBar
     final appBar = AppBar(
       title: Text('ICU', style: TextStyle(color: Colors.red)),
       bottom: TabBar(
-        tabs: [
-          Tab(
-            icon: CircleAvatar(
-              backgroundImage: NetworkImage(enddrawerIcons[0]),
-              radius: 20.0,
-            ),
-            //text: 'Youtuber',
-          ),
-          Tab(
-            icon: CircleAvatar(
-              backgroundImage: NetworkImage(enddrawerIcons[1]),
-              radius: 20.0,
-            ),
-          ),
-        ],
+        tabs: a,
       ),
     );
-    final tabBarView = tabarView();
+    final tabBarView = TabarView();
 
     final bottomNaviBar = BottomNaviBar();
 
     // 結合AppBar和App操作畫面
     final page = DefaultTabController(
         //length: tabBarView.children.length,
-        length: tabBarView.children,
+        length: a.length,
         child: Scaffold(
           appBar: appBar,
           drawer: drawer,

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-class tabarView extends StatefulWidget {
-  get children => 2;
+class TabarView extends StatefulWidget {
+  //get children => 2;
   //get children => TabBarView.children.length;
   @override
-  State<StatefulWidget> createState() => _tabarViewState();
+  State<StatefulWidget> createState() => _TabarViewState();
 }
 
-class _tabarViewState extends State<tabarView> {
+class _TabarViewState extends State<TabarView> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
